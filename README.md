@@ -20,3 +20,7 @@ To Start:-
  STEP 6:- To run this
  ```
  npm start
+ ```
+ OR
+ ```
+ npm run dev
