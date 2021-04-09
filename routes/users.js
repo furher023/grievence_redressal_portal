@@ -10,4 +10,8 @@ router.get('/login',(req,res)=>{
   res.render('users/login');
 });
 
+router.get('/dashboard',(req,res)=>{
+  res.render('users/dashboard');
+});
+
 module.exports = router;
