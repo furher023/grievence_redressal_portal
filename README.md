@@ -27,7 +27,7 @@ Team Name: FairyTale
 * [Shikher Sinha](https://github.com/shikher25git)
 * [Garima Ahuja](https://github.com/garima0508)
 
-Presentation: [FairyTale_Hack36](https://docs.google.com/presentation/d/1axXpajTrNLitP_YvezBTEyd4LIndKr-T5-Fi_DqjKqc/edit?usp=sharing)
+Presentation: [FairyTale_Hack36](https://docs.google.com/presentation/d/1axXpajTrNLitP_YvezBTEyd4LIndKr-T5-Fi_DqjKqc/edit?usp=sharing) <br>
 Demo Video: [Link](#)
 
 
