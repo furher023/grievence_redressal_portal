@@ -14,15 +14,21 @@ router.get('/dashboard',(req,res)=>{
   res.render('users/dashboard');
 });
 
-router.get('/complaint/:id',(req,res)=>{ // show complaint by id
+router.get('/complaint/:id',(req,res)=>{ // show complaint by id (redirect on this route)
     console.log(req.params.id);
-    res.render('users/complaint',{id:req.params.id});
+    db.model('complaints').findOne({ackNo:req.params.id},(err,resu)=>{
+      if(err)
+      throw err; 
+      console.log(resu);
+       res.render('users/complaint',{resu});  
+    });
+    
 });
 
-router.get('/complaints',(req,res) =>{   // show user based complaints
+// router.get('/complaints',(req,res) =>{   // show user based complaints for dashboard
      
-    res.render('users/complaints');
-});
+//     res.render('users/complaints');
+// });
 
 router.post('/complaint',(req,res)=>{   // post complaint
      
