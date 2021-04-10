@@ -22,10 +22,6 @@ const storage = multer.diskStorage({
   }
  });
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
 
 
 router.get('/dashboard',(req,res)=>{
@@ -33,7 +29,7 @@ router.get('/dashboard',(req,res)=>{
     res.redirect('/login');
   }
   else{
-    res.render('users/dashboard');
+    res.render('users/dashboard',{role:req.session.user.role});
   }
 });
 
@@ -43,7 +39,7 @@ router.get('/complaint/active',(req,res)=>{ // show complaint by id (redirect on
       if(err)
       throw err; 
       console.log(result);
-       res.render('users/complaint',{data: result,moment: moment,active: true});  
+       res.render('users/complaint',{data: result,moment: moment,active: true,role:req.session.user.role});  
     });
     
 });
@@ -54,7 +50,7 @@ router.get('/complaint/resolved',(req,res)=>{ // show complaint by id (redirect 
     if(err)
     throw err; 
     console.log(result);
-     res.render('users/complaint',{data: result,moment: moment, active: false});  
+     res.render('users/complaint',{data: result,moment: moment, active: false,role:req.session.user.role});  
   });
   
 });

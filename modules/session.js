@@ -1,9 +1,10 @@
-function setSession(req,name,email,rollNo,hostel){
+function setSession(req,name,email,rollNo,hostel,role){
     req.session.user = {
         name: name,
         email: email,
         rollNo: rollNo,
-        hostel: hostel
+        hostel: hostel,
+        role: role
     };
 }
 

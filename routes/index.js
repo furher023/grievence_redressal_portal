@@ -34,7 +34,7 @@ router.post('/login',(req,res,next)=>{
   .then((result)=>{
     console.log(result);
     if(result.passwordHash == req.body.password){
-      session.setSession(req, result.firstName, result.email, result.rollNo, result.hostel);
+      session.setSession(req, result.firstName, result.email, result.rollNo, result.hostel, result.role);
       res.redirect('/user/dashboard');
     }
     else
