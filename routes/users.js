@@ -25,7 +25,12 @@ router.get('/complaints',(req,res) =>{   // show user based complaints
 });
 
 router.post('/complaint',(req,res)=>{   // post complaint
-
+     
+     const complain = new db.model('complaints')(req.body);
+     complain.save();
+     res.json({
+       complain : "Successful"
+     });
 });
 
 router.post('/forward',(req,res) => {  // roles allowed        -> hostel secretary
