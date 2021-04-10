@@ -14,7 +14,7 @@ router.get('/dashboard',(req,res)=>{
   res.render('users/dashboard');
 });
 
-router.get('/complaint/:id',(req,res)=>{ // show complaint by id (redirected on this route)
+router.get('/complaint/:id',(req,res)=>{ // show complaint by id (redirect on this route)
     console.log(req.params.id);
     db.model('complaints').findOne({ackNo:req.params.id},(err,resu)=>{
       if(err)
