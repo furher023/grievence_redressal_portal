@@ -3,36 +3,87 @@
 <body class="login-page sidebar-collapse">
   
 <%- include navbar.ejs %>
+  <style>
+  .text{
+  color: red;
+  }
+  .dis{
+  display:inline-block;
+  }
+  input[type=checkbox]{
+  display:none;
+  }
+  input[type=checkbox] + label::before{
+     content: "\2714";
+     border: 0.1em solid red;
+     border-radius: 0.2rem;
+     width: 1em;
+     height: 1em;
+     padding-right: 0.2em;
+      color: transparent; 
+  }
+  input[type=checkbox]:checked + label::before{
+     background-color: red;
+     color: #fff;
+  }
   
+  </style>
   <div class="page-header header-filter" style="background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.shriramgi.com%2Fnews-events%2Fwp-content%2Fuploads%2F2016%2F10%2FANY-GRIEVANCE-PLEASE.png&f=1&nofb=1'); background-size: cover; background-position: top center;">
     <div class="container">
       <div class="row">
         <div class="col-lg-7 col-md-6 ml-auto mr-auto">
-          <div class="card card-login">
-            <form class="form" method="POST" action="/login">
+          <div class="card card-login" style=" padding-top:30px;">
+            <form class="form" method="POST" action="/user/dashboard">
               <div class="card-header card-header-danger text-center">
                 <h3 class="card-title">Register Your Complaint</h3>
               </div>
               <div class="card-body">
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">
-                      <i class="material-icons">mail</i>
-                    </span>
+                <div class="input-group" >
+                  <div class="dropdown">
+                    <button class="btn btn-danger btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       Dropdown button
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
                   </div>
-                  <input id="email" name="email" type="email" class="form-control" placeholder="Email..." >
                 </div>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">
-                      <i class="material-icons">lock_outline</i>
-                    </span>
+
+                <br/>
+                <div class="form-group">
+                  <label class="text-danger" for="subject">Subject</label>
+                  <input type="subject" class="form-control" id="subject" >
+                </div>
+                
+                
+                <div class="form-group">
+                  <label class="text-danger" for="description">Description</label>
+                  <textarea class="form-control" id="description" rows="3"></textarea>
+                </div>
+               
+                <div class="container ">
+                    <div class="dis">
+                      <button onclick="defaultBtnActive1()" class=" btn btn-danger btn-sm" id="custom-btn1">Upload Media</button>
+                      <input id="default-btn1" type="file" hidden>
+                    </div>
+                    <div class="content dis">
+                        <div class="text">No file chosen, yet!  </div>
+                     </div>
+                </div> 
+                
+
+                 <div class="form-check">
+                     <input type="checkbox" value="Anonymous Complaint" id="check">
+                     <label class="text-danger" for="check">
+                       Anonymous Complaint
+                      </label>
                   </div>
-                  <input id="password" name="password" type="password" class="form-control" placeholder="Password..." >
-                </div>
+
               </div>
               <div class="text-center">
-                <button class="btn btn-danger btn-round" type="submit">Login</button>
+                <button class="btn btn-danger btn-round" type="submit">Submit</button>
               </div>
             </form>
           </div>
@@ -42,5 +93,10 @@
     <%- include ../footer.ejs %>
   </div>  
 </body>
-
+<script>
+ const defaultBtn1 = document.querySelector("#default-btn1");
+function defaultBtnActive1(){
+        defaultBtn1.click();
+      }
+</script>      
 </html>
