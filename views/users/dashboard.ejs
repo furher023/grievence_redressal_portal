@@ -41,15 +41,44 @@
                 <div class="input-group" >
                   <div class="dropdown">
                     <button class="btn btn-danger btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                       Dropdown button
+                       Grievence Area
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-menu danger" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" onclick="alice(0)">Hostel Amenities</a>
+                        <a class="dropdown-item" onclick="alice(1)">Mess Food</a>
+                        <a class="dropdown-item" onclick="alice(2)">Security</a>
+                        <a class="dropdown-item" onclick="alice(3)">Ragging / Bullying</a>
+                        <a class="dropdown-item" onclick="alice(4)">Sexual Harrasement</a>
+
+
                     </div>
                   </div>
                 </div>
+                <input name="type" type="type" class="form-control" id="comptype" hidden>
+                <script type="text/javascript">
+                  function alice(inp){
+                    //console.log("clicked")
+                    switch(inp){
+                      case 0: document.getElementById("dropdownMenuButton").innerHTML="Hostel Amenities";
+                              document.getElementById("comptype").value=0;
+                              break;
+                      case 1: document.getElementById("dropdownMenuButton").innerHTML="Mess Food";
+                              document.getElementById("comptype").value=1;
+                              break;
+                      case 2: document.getElementById("dropdownMenuButton").innerHTML="Security";
+                              document.getElementById("comptype").value=2;
+                              break;
+                      case 3: document.getElementById("dropdownMenuButton").innerHTML="Ragging / Bullying";
+                              document.getElementById("comptype").value=3;
+                              break;
+                      case 4: document.getElementById("dropdownMenuButton").innerHTML="Sexual Harrasement";
+                              document.getElementById("comptype").value=4;
+                              break;
+                    }
+                    
+
+                  };
+                </script>
 
                 <br/>
                 <div class="form-group">
@@ -77,7 +106,7 @@
                  <div class="form-check">
                      <input name="anonymous" type="checkbox" value=true id="check">
                      <label class="text-danger" for="check">
-                       Anonymous Complaint
+                       Report as Anonymous 
                       </label>
                   </div>
 
