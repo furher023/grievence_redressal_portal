@@ -39,7 +39,7 @@ router.get('/complaint/active',(req,res)=>{ // show complaint by id (redirect on
       if(err)
       throw err; 
       console.log(result);
-       res.render('users/complaint',{data: result,moment: moment,active: true,role:req.session.user.role});  
+       res.render('users/complaint',{data: result,moment: moment,active: true, page: 'active',role:req.session.user.role});  
     });
     
 });
@@ -50,7 +50,7 @@ router.get('/complaint/resolved',(req,res)=>{ // show complaint by id (redirect 
     if(err)
     throw err; 
     console.log(result);
-     res.render('users/complaint',{data: result,moment: moment, active: false,role:req.session.user.role});  
+     res.render('users/complaint',{data: result,moment: moment, active: false, page: 'resolved',role:req.session.user.role});  
   });
   
 });
