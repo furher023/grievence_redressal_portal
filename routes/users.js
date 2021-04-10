@@ -11,15 +11,6 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-router.get('/login',(req,res)=>{
-  res.render('users/login');
-});
-
-router.post('/login',(req,res)=>{
-  console.log(req.body.email);
-  console.log(req.body.pwd);
-  res.send('ok');
-});
 
 router.get('/dashboard',(req,res)=>{
   res.render('users/dashboard');
