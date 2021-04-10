@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+</head>
+<body>
+    <form method="POST" action="/signup">
+        First Name :
+        <input type="text" name="firstName">      <br>        
+        Last Name :
+        <input type="text" name="lastName">       <br>
+        Email :
+        <input type="email" name="email">         <br>
+        Password :
+        <input type="password" name = "passwordHash"> <br>
+        Role :
+        <select name="role">                         
+            <option value="0">Student</option>
+            <option value="1">Hostel Secretary</option>
+            <option value="2">Mess Secretary</option>
+        </select>                                <br>
+        Roll No :
+        <input type="number" name="rollNo"> <br>
+        Hostel :
+        <input type="text" name="hostel"> <br>
+        Room No :
+        <input type="text" name="roomNo"> <br>
+        Phone No. :
+        <input type="tel" name="phoneNo"> <br>
+        <input type="submit">
+    </form>
+</body>
+</html>

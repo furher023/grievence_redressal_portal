@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-
+var db = require('../modules/dbconnect');
 var router = express.Router();
 
 express().use(bodyParser.urlencoded({ extended: true }));

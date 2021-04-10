@@ -56,7 +56,7 @@ const user = new Schema({
 });
 
 user.plugin(normalize);
-mongoose.model('user',user);
+exports.user = mongoose.model('user',user);
 
 const complaints = new Schema({
     ackNo:{
@@ -86,7 +86,7 @@ const complaints = new Schema({
 });
 
 complaints.plugin(normalize);
-mongoose.model('complaints',complaints);
+exports.comp = mongoose.model('complaints',complaints);
 
 
-module.exports = mongoose;
+
