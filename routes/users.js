@@ -3,8 +3,6 @@ var bodyParser = require('body-parser');
 var db = require('../modules/dbconnect');
 var router = express.Router();
 
-express().use(bodyParser.urlencoded({ extended: true }));
-express().use(bodyParser.json())
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {

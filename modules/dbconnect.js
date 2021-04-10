@@ -1,3 +1,4 @@
+  
 const mongoose = require('mongoose');
 var normalize = require ('normalize-mongoose');
 
@@ -56,7 +57,7 @@ const user = new Schema({
 });
 
 user.plugin(normalize);
-exports.user = mongoose.model('user',user);
+mongoose.model('user',user);
 
 const complaints = new Schema({
     ackNo:{
@@ -86,7 +87,7 @@ const complaints = new Schema({
 });
 
 complaints.plugin(normalize);
-exports.comp = mongoose.model('complaints',complaints);
+mongoose.model('complaints',complaints);
 
 
-
+module.exports = mongoose;
