@@ -26,8 +26,10 @@ router.get('/complaints',(req,res) =>{   // show user based complaints
     res.render('users/complaints');
 });
 
-router.post('/complaints',(req,res)=>{
+router.post('/complaint',(req,res)=>{   // post complaint
 
 });
+
+
 
 module.exports = router;
