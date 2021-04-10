@@ -1,45 +1,46 @@
 <%- include header.ejs %>
 
-
-<body class="landing-page sidebar-collapse">
+<body class="login-page sidebar-collapse">
   
 <%- include navbar.ejs %>
-<div class="page-header header-filter" data-parallax="true" style="background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.shriramgi.com%2Fnews-events%2Fwp-content%2Fuploads%2F2016%2F10%2FANY-GRIEVANCE-PLEASE.png&f=1&nofb=1')">
+  
+  <div class="page-header header-filter" style="background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.shriramgi.com%2Fnews-events%2Fwp-content%2Fuploads%2F2016%2F10%2FANY-GRIEVANCE-PLEASE.png&f=1&nofb=1'); background-size: cover; background-position: top center;">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-7 col-md-6 ml-auto mr-auto">
-              <div class="card card-login">
-                <form class="form" method="POST" action="/login">
-                  <div class="card-header card-header-danger text-center">
-                    <h2 class="card-title">Register your Complaint</h2>
-                  </div>
-                  <div class="card-body">
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="material-icons">mail</i>
-                        </span>
-                      </div>
-                      <input id="email" name="email" type="email" class="form-control" placeholder="Email..." >
-                    </div>
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">
-                          <i class="material-icons">lock_outline</i>
-                        </span>
-                      </div>
-                      <input id="password" name="password" type="password" class="form-control" placeholder="Password..." >
-                    </div>
-                  </div>
-                  <div class="text-center">
-                    <button class="btn btn-danger btn-round" type="submit">Login</button>
-                  </div>
-                </form>
+      <div class="row">
+        <div class="col-lg-7 col-md-6 ml-auto mr-auto">
+          <div class="card card-login">
+            <form class="form" method="POST" action="/login">
+              <div class="card-header card-header-danger text-center">
+                <h3 class="card-title">Register Your Complaint</h3>
               </div>
-            </div>  
+              <div class="card-body">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="material-icons">mail</i>
+                    </span>
+                  </div>
+                  <input id="email" name="email" type="email" class="form-control" placeholder="Email..." >
+                </div>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="material-icons">lock_outline</i>
+                    </span>
+                  </div>
+                  <input id="password" name="password" type="password" class="form-control" placeholder="Password..." >
+                </div>
+              </div>
+              <div class="text-center">
+                <button class="btn btn-danger btn-round" type="submit">Login</button>
+              </div>
+            </form>
           </div>
-    
+        </div>  
+      </div>
     </div>
-</div>
-
+    <%- include ../footer.ejs %>
+  </div>  
 </body>
+
+</html>
