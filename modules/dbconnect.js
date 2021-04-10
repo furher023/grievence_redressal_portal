@@ -8,7 +8,7 @@ const options= {   useNewUrlParser: true,
     autoIndex: false,
     useCreateIndex: true 
   };
-  // use for cloud host: mongodb+srv://root:j19bRcHtMzLuMjmu@cluster0.ng42e.mongodb.net/test?retryWrites=true&w=majority , mongodb://localhost:27017/test
+
 mongoose.connect('mongodb://localhost:27017/sgrp',options,(error)=>{ 
     if(error){
         console.log(error);
