@@ -9,8 +9,12 @@
       <div class="row">
         <div class="col-md-8 ml-auto mr-auto">
           <div class="brand text-center">
-            <h1>Your title here</h1>
-            <h3 class="title text-center">Subtitle</h3>
+            <h1>Know about your <%= page%> complaints here.</h1>
+            <%if(page == 'active'){%>
+            <h3 class="title text-center">~ Pending: Your complaint is with the student representative. </h3>
+            <h3 class="title text-center">~ Forwarded: Your complaint is with the relevant authority. </h3>
+            <h3 class="title text-center">~ Once completed, your complaint will move to the resolved section. </h3>
+            <%}%>
           </div>
         </div>
       </div>
