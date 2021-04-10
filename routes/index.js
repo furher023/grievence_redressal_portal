@@ -11,8 +11,9 @@ router.get('/login',(req,res)=>{
 });
 
 router.post('/login',(req,res)=>{
+  console.log(req.body);
   console.log(req.body.email);
-  console.log(req.body.pwd);
+  console.log(req.body.password);
   res.send('ok');
 });
 

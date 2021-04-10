@@ -1,10 +1,6 @@
 var express = require('express');
-var bodyParser = require('body-parser');
-
 var router = express.Router();
 
-express().use(bodyParser.urlencoded({ extended: true }));
-express().use(bodyParser.json())
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
