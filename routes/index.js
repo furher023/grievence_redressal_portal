@@ -6,27 +6,45 @@ var session = require('../modules/session');
 var db = require('../modules/dbconnect');
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  if(req.session.user == undefined)
+  res.render('index', { loggedIn: false });
+  else
+  res.render('index', { loggedIn: true });
 });
 
+/*Logout*/
+router.get('/logout',(req,res)=>{
+  req.session.destroy((err)=>{
+    if(err) res.send(err);
+    res.redirect('/');
+  })
+});
+
+/*Login*/
 router.get('/login',(req,res)=>{
-  res.render('login');
+  if(req.session.user == undefined)
+  res.render('login',{loggedIn: false});
+  else
+  res.redirect('/user/dashboard');
 });
 
 router.post('/login',(req,res,next)=>{
+
   query.login({email: req.body.email})
   .then((result)=>{
     console.log(result);
     if(result.passwordHash == req.body.password){
       session.setSession(req, result.firstName, result.email);
-      next('/user/dasboard');
+      res.redirect('/user/dashboard');
     }
     else
       res.send("Wrong password");
   })
   .catch(err => res.send('unsuccesful'+err));
+
 });
 
+/*Singup*/
 router.get('/signup',(req,res)=>{
   res.render('signup');
 });

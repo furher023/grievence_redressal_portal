@@ -61,14 +61,14 @@ mongoose.model('user',user);
 
 const complaints = new Schema({
     ackNo:{
-        type: String
+        type: String,
+        unique: true
     },
     type:{
         type: Number
     },
     subject:{
-        type: String,
-        unique: true
+        type: String
     },
     body:{
         type:String

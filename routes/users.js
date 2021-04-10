@@ -11,7 +11,12 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/dashboard',(req,res)=>{
-  res.render('users/dashboard');
+  if(req.session.user == undefined){
+    res.redirect('/login');
+  }
+  else{
+    res.render('users/dashboard');
+  }
 });
 
 router.get('/complaint/:id',(req,res)=>{ // show complaint by id
