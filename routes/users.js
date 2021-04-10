@@ -52,25 +52,37 @@ router.get('/complaint/:id',(req,res)=>{ // show complaint by id (redirect on th
 //     res.render('users/complaints');
 // });
 
-router.post('/complaint', upload.array('proof', 5), (req,res)=>{   // post complaint
+function postComplaint(obj){
+  // const complain = new db.model('complaints')(obj);
+  // complain.save();
+  console.log(obj);
+}
+
+router.post('/complaint', upload.array('proof', 5), (req, res, postComplaint)=>{   // post complaint
      
     var reg = '/jpeg|jpg|gif|png|avi|mkv|mp4|mp3/';
-    try{
-      if(req.file)
-      if (!reg.match(path.extname(req.file.originalname).toLowerCase())){
-        res.send('Please upload a image or video file!');
+    var obj = {files: []};
+    var f = false;
+      if(req.files.length > 0){
+        for(var i=0;i<req.files.length;i++){
+          if (!reg.match(path.extname(req.files[i].filename).toLowerCase())){
+            f = true;
+            res.send('Please upload a image or video file!');
+          }
+          var str = req.files[i].destination + req.files[i].filename;
+          obj.files.push(str); 
+        }
       }
-      if(req.file)
-      req.body.proof = './Uploads/' + req.file.fieldname + '-' + Date.now() + path.extname(req.file.originalname);
-      const complain = new db.model('complaints')(req.body);
-      complain.save();
-      res.json({
-        complain : "Successful"
-      });
-    }
-    catch(err){
-      res.send('Error');
-    }
+
+      var strr = JSON.stringify(obj);
+      if(req.files.length)
+      req.body.proof = strr;
+      if(f == false){
+        postComplaint(req.body);
+        res.json({
+          complain : "Successful"
+        });
+      }
 });
 
 router.post('/forward',(req,res) => {  // roles allowed        -> hostel secretary
