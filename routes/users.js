@@ -36,13 +36,13 @@ router.get('/dashboard',(req,res)=>{
   }
 });
 
-router.get('/complaint/:id',(req,res)=>{ // show complaint by id (redirect on this route)
+router.get('/complaint',(req,res)=>{ // show complaint by id (redirect on this route)
     console.log(req.params.id);
-    db.model('complaints').findOne({ackNo:req.params.id},(err,resu)=>{
+    db.model('complaints').find({rollNo:req.session.user.rollNo},(err,result)=>{
       if(err)
       throw err; 
-      console.log(resu);
-       res.render('users/complaint',{resu});  
+      console.log(result);
+       res.render('users/complaint',{result});  
     });
     
 });
@@ -52,13 +52,10 @@ router.get('/complaint/:id',(req,res)=>{ // show complaint by id (redirect on th
 //     res.render('users/complaints');
 // });
 
-function postComplaint(obj){
-  // const complain = new db.model('complaints')(obj);
-  // complain.save();
-  console.log(obj);
-}
 
-router.post('/complaint', upload.array('proof', 5), (req, res, postComplaint)=>{   // post complaint
+  
+
+router.post('/complaint', upload.array('proof', 5), (req, res)=>{   // post complaint
      
     var reg = '/jpeg|jpg|gif|png|avi|mkv|mp4|mp3/';
     var obj = {files: []};
@@ -67,7 +64,7 @@ router.post('/complaint', upload.array('proof', 5), (req, res, postComplaint)=>{
         for(var i=0;i<req.files.length;i++){
           if (!reg.match(path.extname(req.files[i].filename).toLowerCase())){
             f = true;
-            res.send('Please upload a image or video file!');
+            
           }
           var str = req.files[i].destination + req.files[i].filename;
           obj.files.push(str); 
@@ -77,13 +74,32 @@ router.post('/complaint', upload.array('proof', 5), (req, res, postComplaint)=>{
       var strr = JSON.stringify(obj);
       if(req.files.length)
       req.body.proof = strr;
+      req.body.rollNo= req.session.user.rollNo;
+      req.body.hostel= req.session.user.hostel;
+
       if(f == false){
-        postComplaint(req.body);
-        res.json({
-          complain : "Successful"
+        const complain = new db.model('complaints')(req.body);
+        complain.save((err)=>{
+          if(err) res.send(err);
+          else
+          res.json({
+            complain : "Successful"
+          });
         });
       }
-});
+      else{
+        const complain = new db.model('complaints')(req.body);
+        complain.save((err)=>{
+          if(err) res.send(err);
+          else
+          res.json({
+            complain : "Successful"
+          });
+        });
+      }
+        
+      }
+  );
 
 router.post('/forward',(req,res) => {  // roles allowed        -> hostel secretary
                                        // to access this route                                     

@@ -86,6 +86,9 @@ const complaints = new Schema({
     },
     rollNo:{
         type:Number
+    },
+    hostel:{
+        type:String
     }
     
 });
