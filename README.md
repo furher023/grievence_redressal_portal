@@ -7,7 +7,7 @@
 
 ## Introduction:
   <strong>Theme: E-Administration</strong><br>
-  While college life is generally full of zeal, fun, and amusement, students can also run into several issues along the way. Now, these issues can be of various types, ranging from hostels to campus to their personal life. Our portal aims to bring all these issues to the relevant authorities in a structured manner that'll be beneficial to both the students and the administration, while maintaining e-records of all the complaints and their details.
+  While college life is generally full of zeal, fun, and amusement, students can also run into several issues along the way. Now, these issues can be of various types, ranging from hostels, to campus, to their personal life. Our portal aims to bring all these issues to the relevant authorities in a structured manner that'll be beneficial to both the students and the administration, while maintaining e-records of all the complaints and their details.
   
 ## Table of Contents:
 
