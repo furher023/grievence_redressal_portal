@@ -29,9 +29,7 @@ router.get('/complaints',(req,res) =>{   // show user based complaints
 router.post('/complaint',(req,res)=>{   // post complaint
 
 });
-router.get('/forward',(req,res)=>{
-    res.end();
-});
+
 router.post('/forward',(req,res) => {  // roles allowed        -> hostel secretary
                                        // to access this route                                     
 });
