@@ -55,15 +55,22 @@ router.get('/complaint/:id',(req,res)=>{ // show complaint by id (redirect on th
 router.post('/complaint', upload.array('proof', 5), (req,res)=>{   // post complaint
      
     var reg = '/jpeg|jpg|gif|png|avi|mkv|mp4|mp3/';
-    if (!reg.match(path.extname(req.file.originalname).toLowerCase())){
-      res.send('Please upload an image!')
+    try{
+      if(req.file)
+      if (!reg.match(path.extname(req.file.originalname).toLowerCase())){
+        res.send('Please upload a image or video file!');
+      }
+      if(req.file)
+      req.body.proof = './Uploads/' + req.file.fieldname + '-' + Date.now() + path.extname(req.file.originalname);
+      const complain = new db.model('complaints')(req.body);
+      complain.save();
+      res.json({
+        complain : "Successful"
+      });
     }
-    req.body.proof = './Uploads/' + req.file.fieldname + '-' + Date.now() + path.extname(req.file.originalname);
-    const complain = new db.model('complaints')(req.body);
-    complain.save();
-    res.json({
-      complain : "Successful"
-    });
+    catch(err){
+      res.send('Error');
+    }
 });
 
 router.post('/forward',(req,res) => {  // roles allowed        -> hostel secretary
