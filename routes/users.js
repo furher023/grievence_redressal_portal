@@ -4,6 +4,7 @@ const multer = require("multer");
 const path = require('path');
 var db = require('../modules/dbconnect');
 var router = express.Router();
+var moment = require('moment');
 
 express().use(bodyParser.json());
 
@@ -36,15 +37,26 @@ router.get('/dashboard',(req,res)=>{
   }
 });
 
-router.get('/complaint',(req,res)=>{ // show complaint by id (redirect on this route)
+router.get('/complaint/active',(req,res)=>{ // show complaint by id (redirect on this route)
     console.log(req.params.id);
     db.model('complaints').find({rollNo:req.session.user.rollNo},(err,result)=>{
       if(err)
       throw err; 
       console.log(result);
-       res.render('users/complaint',{result});  
+       res.render('users/complaint',{data: result,moment: moment,active: true});  
     });
     
+});
+
+router.get('/complaint/resolved',(req,res)=>{ // show complaint by id (redirect on this route)
+  console.log(req.params.id);
+  db.model('complaints').find({rollNo:req.session.user.rollNo},(err,result)=>{
+    if(err)
+    throw err; 
+    console.log(result);
+     res.render('users/complaint',{data: result,moment: moment, active: false});  
+  });
+  
 });
 
 // router.get('/complaints',(req,res) =>{   // show user based complaints for dashboard

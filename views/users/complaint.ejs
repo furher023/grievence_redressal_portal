@@ -4,7 +4,7 @@
   
 <%- include navbar.ejs %>
 
-<div class="page-header header-filter" data-parallax="true" style="background-image: url('assets/img/bg3.jpg')">
+<div class="page-header header-filter" data-parallax="false" style="background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.shriramgi.com%2Fnews-events%2Fwp-content%2Fuploads%2F2016%2F10%2FANY-GRIEVANCE-PLEASE.png&f=1&nofb=1')">
     <div class="container">
       <div class="row">
         <div class="col-md-8 ml-auto mr-auto">
@@ -20,6 +20,33 @@
     <div class="container">
       <div class="section text-center">
         <h2 class="title">Your main section here</h2>
+        <table class="table table-bordered table-hover table-dark">
+            <thead>
+              <tr>
+                <th scope="col">S.no.</th>
+                <th scope="col">Ack. No.</th>
+                <th scope="col">Subject</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+
+              </tr>
+            </thead>
+            <tbody> 
+                <% for(var i=0;i < data.length ;i++) { if( active?data[i].status == 1 || data[i].status == 0: data[i].status == 2 || data[i].status == 3){ %>
+                <tr>
+                    <th scope="row"><%= i+1 %> </th>
+                    <td><%= data[i].id %></td>
+                    <td><%= data[i].subject %></td>
+                    <td><%= moment(data[i].date).format('DD MMM YYYY') %></td>
+                    <% if(data[i].status == 0){ %>
+                    <td>Pending</td>
+                    <% } %>
+                    <% if(data[i].status == 1){ %>
+                        <td>Forwarded</td>
+                        <% } %>
+                </tr>
+                <% } }%>
+            </tbody>
       </div>
     </div>
   </div>

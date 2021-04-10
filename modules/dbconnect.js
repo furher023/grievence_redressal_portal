@@ -89,6 +89,10 @@ const complaints = new Schema({
     },
     hostel:{
         type:String
+    },
+    date:{
+        type:Date,
+        default: Date.now
     }
     
 });
