@@ -30,6 +30,10 @@ router.post('/complaint',(req,res)=>{   // post complaint
 
 });
 
+router.post('/forward',(req,res) => {  // roles allowed        -> hostel secretary
+                                       // to access this route
+                                       
+});
 
 
 module.exports = router;
