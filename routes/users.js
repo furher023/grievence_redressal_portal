@@ -15,7 +15,10 @@ const storage = multer.diskStorage({
  });
 
  var upload = multer({
-  storage: storage
+  storage: storage,
+  limits: {
+    fileSize: 10000000
+  }
  });
 
 /* GET users listing. */
@@ -49,9 +52,9 @@ router.get('/complaint/:id',(req,res)=>{ // show complaint by id (redirect on th
 //     res.render('users/complaints');
 // });
 
-router.post('/complaint', upload.single('proof'), (req,res)=>{   // post complaint
+router.post('/complaint', upload.array('proof', 5), (req,res)=>{   // post complaint
      
-    var reg = '/jpeg|jpg|gif|png/';
+    var reg = '/jpeg|jpg|gif|png|avi|mkv|mp4|mp3/';
     if (!reg.match(path.extname(req.file.originalname).toLowerCase())){
       res.send('Please upload an image!')
     }
