@@ -33,7 +33,7 @@
       <div class="row">
         <div class="col-lg-7 col-md-6 ml-auto mr-auto">
           <div class="card card-login" style=" padding-top:30px;">
-            <form class="form" method="POST" action="/user/dashboard">
+            <form class="form" method="POST" enctype="multipart/form-data" action="/user/complaint">
               <div class="card-header card-header-danger text-center">
                 <h3 class="card-title">Register Your Complaint</h3>
               </div>
@@ -41,32 +41,61 @@
                 <div class="input-group" >
                   <div class="dropdown">
                     <button class="btn btn-danger btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                       Dropdown button
+                       Grievence Area
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-menu danger" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" onclick="alice(0)">Hostel Amenities</a>
+                        <a class="dropdown-item" onclick="alice(1)">Mess Food</a>
+                        <a class="dropdown-item" onclick="alice(2)">Security</a>
+                        <a class="dropdown-item" onclick="alice(3)">Ragging / Bullying</a>
+                        <a class="dropdown-item" onclick="alice(4)">Sexual Harrasement</a>
+
+
                     </div>
                   </div>
                 </div>
+                <input name="type" type="type" class="form-control" id="comptype" hidden>
+                <script type="text/javascript">
+                  function alice(inp){
+                    //console.log("clicked")
+                    switch(inp){
+                      case 0: document.getElementById("dropdownMenuButton").innerHTML="Hostel Amenities";
+                              document.getElementById("comptype").value=0;
+                              break;
+                      case 1: document.getElementById("dropdownMenuButton").innerHTML="Mess Food";
+                              document.getElementById("comptype").value=1;
+                              break;
+                      case 2: document.getElementById("dropdownMenuButton").innerHTML="Security";
+                              document.getElementById("comptype").value=2;
+                              break;
+                      case 3: document.getElementById("dropdownMenuButton").innerHTML="Ragging / Bullying";
+                              document.getElementById("comptype").value=3;
+                              break;
+                      case 4: document.getElementById("dropdownMenuButton").innerHTML="Sexual Harrasement";
+                              document.getElementById("comptype").value=4;
+                              break;
+                    }
+                    
+
+                  };
+                </script>
 
                 <br/>
                 <div class="form-group">
                   <label class="text-danger" for="subject">Subject</label>
-                  <input type="subject" class="form-control" id="subject" >
+                  <input name="subject" type="subject" class="form-control" id="subject" >
                 </div>
                 
                 
                 <div class="form-group">
                   <label class="text-danger" for="description">Description</label>
-                  <textarea class="form-control" id="description" rows="3"></textarea>
+                  <textarea name="body" class="form-control" id="description" rows="3"></textarea>
                 </div>
                
                 <div class="container ">
                     <div class="dis">
-                      <button onclick="defaultBtnActive1()" class=" btn btn-danger btn-sm" id="custom-btn1">Upload Media</button>
-                      <input id="default-btn1" type="file" hidden>
+                      
+                      <input name="proof" multiple="multiple" id="default-btn1" type="file" >
                     </div>
                     <div class="content dis">
                         <div class="text">No file chosen, yet!  </div>
@@ -75,9 +104,9 @@
                 
 
                  <div class="form-check">
-                     <input type="checkbox" value="Anonymous Complaint" id="check">
+                     <input name="anonymous" type="checkbox" value=true id="check">
                      <label class="text-danger" for="check">
-                       Anonymous Complaint
+                       Report as Anonymous 
                       </label>
                   </div>
 
