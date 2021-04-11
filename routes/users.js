@@ -84,6 +84,8 @@ router.post('/complaint', upload.array('proof', 5), (req, res)=>{   // post comp
       req.body.proof = strr;
       req.body.rollNo= req.session.user.rollNo;
       req.body.hostel= req.session.user.hostel;
+      if(req.body.anonymous || req.body.type > 1)
+      req.body.status = 1;
 
       if(f == false){
         const complain = new db.model('complaints')(req.body);
@@ -112,6 +114,21 @@ router.post('/complaint', upload.array('proof', 5), (req, res)=>{   // post comp
 router.get('/review',(req,res)=>{
   if(req.session.user != undefined && req.session.user.role > 0 && req.session.user.role <=2){
     db.model('complaints').find({status:0,hostel:req.session.user.hostel,anonymous:false,type:(req.session.user.role-1)},(err,result)=>{
+      for( var i=0;i<result.length;i++){
+        if(result[i].proof!= undefined){
+        var tem = JSON.parse(result[i].proof)
+        //console.log(tem);
+        result[i].jp = tem}
+      }
+      //console.log(result[0].jp);
+      if(err) res.send(err);
+      else
+      res.render('users/review',{role:req.session.user.role,data:result,moment:moment});
+    })
+    
+  }
+  else if(req.session.user != undefined && req.session.user.role == 3){
+    db.model('complaints').find({status: 1},(err,result)=>{
       for( var i=0;i<result.length;i++){
         if(result[i].proof!= undefined){
         var tem = JSON.parse(result[i].proof)
