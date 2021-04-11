@@ -147,19 +147,38 @@ router.get('/review',(req,res)=>{
 router.post('/forward/:id',(req,res) => {  // roles allowed         
   if(req.session.user != undefined && req.session.user.role > 0){
       //mongodb query to change status to 1
-  }
+      db.model('complaints').findByIdAndUpdate(req.params.id,{status:1},(err,resu)=>{
+              if(err)
+              throw err;
+              console.log("Updated\n",resu);
+      });
+    }
+    res.redirect('/user/review');
 });
 
 router.post('/resolved/:id',(req,res) => {  // roles allowed                                       
   if(req.session.user != undefined && req.session.user.role > 0){
     // mongodb query to change status to 2
-  }
+    db.model('complaints').findByIdAndUpdate(req.params.id,{status:2},(err,resu)=>{
+      if(err)
+      throw err;
+      console.log("Updated\n",resu);
+});
+}
+res.redirect('/user/review'); 
 });
 
 router.post('/reject/:id',(req,res) => {  // roles allowed                                       
   if(req.session.user != undefined && req.session.user.role > 0){
     // mongodb query to change status to 3
-  }
+    db.model('complaints').findByIdAndUpdate(req.params.id,{status:3},(err,resu)=>{
+      if(err)
+      throw err;
+      console.log("Updated\n",resu);
+});
+}
+res.redirect('/user/review');
+  
 });
 
 
