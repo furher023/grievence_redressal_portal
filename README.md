@@ -1,4 +1,5 @@
 <h1 align="center">Student Grievance Redressal Portal</h1>
+
 ![Screenshot (122)](https://user-images.githubusercontent.com/53086195/114290599-667e5e00-9a9e-11eb-8fcb-2fb7fedeef53.png)
 <p align="center">
 </p>
