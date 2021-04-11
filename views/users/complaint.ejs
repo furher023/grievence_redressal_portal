@@ -36,9 +36,10 @@
               </tr>
             </thead>
             <tbody> 
-                <% for(var i=data.length-1 ;i > 0  ;i--) { if( active?data[i].status == 1 || data[i].status == 0: data[i].status == 2 || data[i].status == 3){ %>
+                <% var c=1; 
+                for(var i=data.length-1 ;i > 0  ;i--) { if( active?data[i].status == 1 || data[i].status == 0: data[i].status == 2 || data[i].status == 3){ %>
                 <tr>
-                    <th scope="row"><%= i+1 %> </th>
+                    <th scope="row"><%= c++  %> </th>
                     <td><%= data[i].id %></td>
                     <td><%= data[i].subject %></td>
                     <td><%= moment(data[i].date).format('DD MMM YYYY') %></td>

@@ -1,0 +1,50 @@
+<%- include header.ejs %>
+
+<body>
+
+    <%- include navbar.ejs %>
+ 
+<div class="page-header header-filter" data-parallax="true" style="background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.shriramgi.com%2Fnews-events%2Fwp-content%2Fuploads%2F2016%2F10%2FANY-GRIEVANCE-PLEASE.png&f=1&nofb=1')">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto">
+          <div class="brand text-center">
+            <h1>Number of Unresolved Complaints: </h1>
+            <h1 class="title text-center "> <%= data.length %></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main main-raised">
+    
+    <div class="container">
+      <div class="section text-center">
+        <h2 class="title">Complain No. ya29920amdbls0 </h2>
+        <hr/>
+        <h3 class="title">Sexual Harrasment</h3>
+      </div>
+      <h3 class="title">RollNo: 18232</h3>
+      <hr/>
+      <h3 class="title">Hostel: New VS</h3>
+      <hr/>
+      <h3 class="title">Date: 11/04/2021 %> </h3>
+      <hr/>
+      <h3 class="title">Brief</h3>
+        <hr/>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias laudantium minus harum voluptatem. Nesciunt sit maxime rem delectus ducimus! Vel provident magnam aspernatur tempora porro debitis qui nemo minus fugiat?</p>
+      <h3 class="title">Proof: </h3>
+       <hr />
+      <a href="#">
+          view
+      </a>
+    </div>
+    <form method="POST" action="/user/resolved/"  >
+        <button class="btn btn-primary btn-md btn-round" type="submit">Resolve</button>
+    <form method="POST" action="/user/reject/"  >
+                      <button class="btn btn-danger btn-md btn-round" type="submit">Reject</button>
+  </div>
+
+  <%- include ../footer.ejs %>
+</body>
+</html>

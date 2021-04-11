@@ -29,7 +29,9 @@
                   <td><%= data[i].id %></td>
                   <td><%= data[i].subject %></td>
                   <td><%= moment(data[i].date).format('DD MMM YYYY') %></td>
+                  <% if(data[i].jp.files[0] != undefined){ %>
                   <td><a href="<%= data[i].jp.files[0]%>" target="_blank"> Review</a>
+                  <% } %>
                   </td>
                   <td>
                     <form method="POST" action="/user/forward/<%= data[i]._id%>"  >

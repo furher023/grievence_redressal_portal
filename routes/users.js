@@ -28,6 +28,9 @@ router.get('/dashboard',(req,res)=>{
   if(req.session.user == undefined){
     res.redirect('/login');
   }
+  else if(req.session.user.role == 3){
+    res.redirect('/user/review');
+  }
   else{
     res.render('users/dashboard',{role:req.session.user.role});
   }
@@ -129,16 +132,17 @@ router.get('/review',(req,res)=>{
   }
   else if(req.session.user != undefined && req.session.user.role == 3){
     db.model('complaints').find({status: 1},(err,result)=>{
+      console.log(result);
       for( var i=0;i<result.length;i++){
         if(result[i].proof!= undefined){
         var tem = JSON.parse(result[i].proof)
         //console.log(tem);
         result[i].jp = tem}
       }
-      //console.log(result[0].jp);
+      console.log(result[0].jp);
       if(err) res.send(err);
       else
-      res.render('users/review',{role:req.session.user.role,data:result,moment:moment});
+      res.render('users/adminReview',{role:req.session.user.role,data:result,moment:moment});
     })
     
   }
