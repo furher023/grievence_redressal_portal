@@ -9,6 +9,7 @@
   <strong>Theme: E-Administration</strong><br>
   While college life is generally full of zeal, fun, and amusement, students can also run into several issues along the way. Now, these issues can be of various types, ranging from hostels, to campus, to their personal life. Our portal aims to bring all these issues to the relevant authorities in a structured manner that'll be beneficial to both the students and the administration, while maintaining e-records of all the complaints and their details.
 ## Screenshots
+![Screenshot (122)](https://user-images.githubusercontent.com/53086195/114290599-667e5e00-9a9e-11eb-8fcb-2fb7fedeef53.png)
 ![image](Screenshots/capture.JPG)
 ![image](Screenshots/capture1.JPG)
 ## Technology Stack:
