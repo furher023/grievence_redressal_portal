@@ -127,8 +127,22 @@ router.get('/review',(req,res)=>{
   }
 });
 
-router.post('/forward',(req,res) => {  // roles allowed        -> hostel secretary // to access this route                                     
-  
+router.post('/forward/:id',(req,res) => {  // roles allowed         
+  if(req.session.user != undefined && req.session.user.role > 0){
+      //mongodb query to change status to 1
+  }
+});
+
+router.post('/resolved/:id',(req,res) => {  // roles allowed                                       
+  if(req.session.user != undefined && req.session.user.role > 0){
+    // mongodb query to change status to 2
+  }
+});
+
+router.post('/reject/:id',(req,res) => {  // roles allowed                                       
+  if(req.session.user != undefined && req.session.user.role > 0){
+    // mongodb query to change status to 3
+  }
 });
 
 
