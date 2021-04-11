@@ -74,7 +74,7 @@ router.post('/complaint', upload.array('proof', 5), (req, res)=>{   // post comp
             f = true;
             
           }
-          var str = req.files[i].destination + req.files[i].filename;
+          var str = '/Uploads/' + req.files[i].filename;
           obj.files.push(str); 
         }
       }
@@ -109,8 +109,26 @@ router.post('/complaint', upload.array('proof', 5), (req, res)=>{   // post comp
       }
   );
 
-router.post('/forward',(req,res) => {  // roles allowed        -> hostel secretary
-                                       // to access this route                                     
+router.get('/review',(req,res)=>{
+  if(req.session.user != undefined && req.session.user.role > 0 && req.session.user.role <=2){
+    db.model('complaints').find({status:0,hostel:req.session.user.hostel,anonymous:false,type:(req.session.user.role-1)},(err,result)=>{
+      for( var i=0;i<result.length;i++){
+        if(result[i].proof!= undefined){
+        var tem = JSON.parse(result[i].proof)
+        //console.log(tem);
+        result[i].jp = tem}
+      }
+      //console.log(result[0].jp);
+      if(err) res.send(err);
+      else
+      res.render('users/review',{role:req.session.user.role,data:result,moment:moment});
+    })
+    
+  }
+});
+
+router.post('/forward',(req,res) => {  // roles allowed        -> hostel secretary // to access this route                                     
+  
 });
 
 

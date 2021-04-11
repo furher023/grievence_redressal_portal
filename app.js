@@ -35,6 +35,7 @@ app.use(logger('dev'));
 
 app.use(cookieParser());
 app.use("/public", express.static(path.resolve(__dirname, 'public')));
+app.use("/Uploads", express.static(path.resolve(__dirname, 'Uploads')));
 app.use('/', indexRouter);
 app.use('/user', usersRouter);
 

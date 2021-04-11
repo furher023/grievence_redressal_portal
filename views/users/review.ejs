@@ -1,0 +1,61 @@
+ <%- include header.ejs %>
+ <body>
+    <%- include navbar.ejs %>
+
+ <div class="page-header header-filter" data-parallax="true" style="background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.shriramgi.com%2Fnews-events%2Fwp-content%2Fuploads%2F2016%2F10%2FANY-GRIEVANCE-PLEASE.png&f=1&nofb=1')">
+    <div class="container" style = "margin-top: 70px">
+      <div class="row">
+        <div class="col-md-12 ml-auto mr-auto">
+          <div class="brand text-center">
+            <h1>Review Complaints for Forwarding</h1>
+            <table class="table table-bordered table-hover table-dark">
+              <thead>
+                <tr>
+                  <th scope="col">S.no.</th>
+                  <th scope="col">Ack. No.</th>
+                  <th scope="col">Subject</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Proof</th>
+                  <th scope="col">Forward</th>
+                  <th scope="col">Reject</th>
+  
+                </tr>
+              </thead>
+              <tbody> 
+              <% var c=1;
+               for(var i=data.length-1 ;i >= 0  ;i--) {%>
+                <tr>
+                  <th scope="row"><%= c++ %> </th>
+                  <td><%= data[i].id %></td>
+                  <td><%= data[i].subject %></td>
+                  <td><%= moment(data[i].date).format('DD MMM YYYY') %></td>
+                  <td><a href="<%= data[i].jp.files[0]%>" target="_blank"> Review</a>
+                  </td>
+                  <td>
+                    <form method="POST" action="/user/forward/<%= data[i]._id%>"  >
+                      <button class="btn btn-primary btn-md btn-round" type="submit">Forward</button>
+                    </form>
+                  </td>
+                  <td>
+                    <form method="POST" action="/user/reject/<%= data[i]._id%>"  >
+                      <button class="btn btn-danger btn-md btn-round" type="submit">Reject</button>
+                    </form>
+                  </td>
+                  <% } %>
+              
+                
+              </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+  <%- include ../footer.ejs %>
+
+  
+</body>
+</html>
+
